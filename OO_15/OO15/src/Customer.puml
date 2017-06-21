@@ -1,0 +1,11 @@
+@startuml
+[*] --> NotCarried
+Carried --> [*]
+Carried : +arrivedDes()
+FailedToBeCarried --> [*]
+state choice1 <<choice>>
+NotCarried --> choice1:3s之后/
+choice1 --> Carried:tryToGetOn()==true/
+choice1 --> FailedToBeCarried:tryToGetOn()==false/
+FailedToBeCarried : +logFailure()
+@enduml

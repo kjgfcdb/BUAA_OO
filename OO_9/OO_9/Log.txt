@@ -1,0 +1,10 @@
+Customer#0 First Logging :
+
+Taxis tried to grap Customer#0's order: 
+Taxi#9	
+Taxi chosen by Customer#0 : Taxi#9
+Path found for Customer#0 :
+>>>>(1,1)	>>>>(2,1)	>>>>(2,2)	>>>>(2,3)	>>>>(3,3)	
+>>>>(3,4)	>>>>(3,5)	>>>>(4,5)	>>>>(5,5)	>>>>(5,4)	
+>>>>(4,4)	
+-----------------------------------

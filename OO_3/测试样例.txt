@@ -1,0 +1,116 @@
+IN:
+(FR,1,UP,0)
+(ER,3,1)
+(ER,3,3)
+q
+OUT:
+[FR,1,UP,0]/(1,STILL,1.0)
+[ER,3,1]/(3,UP,2.0)
+SAME [ER,3,3]
+
+IN:
+(FR,1,UP,0) 
+(FR,8,DOWN,1) 
+(FR,8,DOWN,3) 
+(FR,8,DOWN,5)
+q
+OUT:
+[FR,1,UP,0]/(1,STILL,1.0)
+[FR,8,DOWN,1]/(8,UP,4.5)
+SAME [FR,8,DOWN,3]
+SAME [FR,8,DOWN,5]
+
+IN:
+(FR, 1, UP, 0)
+(FR, 8, DOWN, 0)
+(ER, 4, 1)
+(FR, 8, UP, 1)
+(ER, 8, 1)
+(FR, 5, DOWN, 6)
+(ER, 10, 6)
+q
+OUT:
+[FR,1,UP,0]/(1,STILL,1.0)
+[ER,4,1]/(4,UP,2.5)
+[FR,8,DOWN,0]/(8,UP,5.5)
+[FR,8,UP,1]/(8,UP,5.5)
+[ER,8,1]/(8,UP,5.5)
+[FR,5,DOWN,6]/(5,DOWN,8.0)
+[ER,10,6]/(10,UP,11.5)
+
+IN:
+(FR, 1, UP, 0)
+(ER, 8, 1)
+(FR, 4, UP, 2)
+q
+OUT:
+[FR,1,UP,0]/(1,STILL,1.0)
+[FR,4,UP,2]/(4,UP,2.5)
+[ER,8,1]/(8,UP,5.5)
+
+IN:
+(FR, 1, UP, 0)
+(ER, 8, 1)
+(FR, 4, UP, 2)
+(ER, 6, 4)
+q
+OUT:
+[FR,1,UP,0]/(1,STILL,1.0)
+[FR,4,UP,2]/(4,UP,2.5)
+[ER,6,4]/(6,UP,4.5)
+[ER,8,1]/(8,UP,6.5)
+
+IN:
+(FR, 1, UP, 0)
+(ER, 8, 1)
+(FR, 4, UP, 2)
+(ER, 5, 4)
+q
+OUT:
+[FR,1,UP,0]/(1,STILL,1.0)
+[FR,4,UP,2]/(4,UP,2.5)
+[ER,8,1]/(8,UP,5.5)
+[ER,5,4]/(5,DOWN,8.0)
+
+IN:
+(FR, 1, UP, 0)
+(ER, 8, 1)
+(FR, 4, UP, 2)
+(FR, 9, UP, 3)
+(ER, 10, 3)
+(ER, 9, 3)
+q
+OUT:
+[FR,1,UP,0]/(1,STILL,1.0)
+[FR,4,UP,2]/(4,UP,2.5)
+[ER,8,1]/(8,UP,5.5)
+[FR,9,UP,3]/(9,UP,7.0)
+[ER,9,3]/(9,UP,7.0)
+[ER,10,3]/(10,UP,8.5)
+
+IN:
+(FR, 1, UP, 0) 
+(ER, 10,0 ) 
+(ER, 4, 2) 
+(FR, 4, DOWN, 2) 
+(FR, 4, UP, 3)
+q
+[FR,1,UP,0]/(1,STILL,1.0)
+[ER,4,2]/(4,UP,2.5)
+[ER,10,0]/(10,UP,6.5)
+[FR,4,DOWN,2]/(4,DOWN,10.5)
+[FR,4,UP,3]/(4,STILL,12.5)
+
+IN:
+(FR,1,UP,0) 
+(FR,5,DOWN,1) 
+(FR,5,UP,1) 
+(ER,5,1) 
+(ER,9,2) 
+q
+OUT:
+[FR,1,UP,0]/(1,STILL,1.0)
+[FR,5,DOWN,1]/(5,UP,3.0)
+[FR,5,UP,1]/(5,UP,3.0)
+[ER,5,1]/(5,UP,3.0)
+[ER,9,2]/(9,UP,6.0)

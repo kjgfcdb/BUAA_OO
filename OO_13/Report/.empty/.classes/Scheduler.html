@@ -1,0 +1,189 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: Scheduler</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: Scheduler (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">Scheduler</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (4/ 4)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (37/ 37)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;class Scheduler{
+<i>2</i>&nbsp;    protected ReqQue que;//请求队列
+<i>3</i>&nbsp;    protected ALSElevator elv;//只有一部电梯
+<i>4</i>&nbsp;    protected Request Reqtmp;//临时请求
+<i>5</i>&nbsp;    protected int upDown;
+<i>6</i>&nbsp;    protected int first;//指出是不是第一条指令
+<i>7</i>&nbsp;    protected long preTime;//指出之前一条指令的时刻
+<b class="fc"><i>8</i>&nbsp;    Scheduler () {//调度器需要初始化</b>
+<i>9</i>&nbsp;        /**
+<i>10</i>&nbsp;         * @REQUIRES:None;
+<i>11</i>&nbsp;         * @MODIFIES:\this.que;\this.elv;\this.first;
+<i>12</i>&nbsp;         * @EFFECTS:;
+<i>13</i>&nbsp;         *      \this.que == new ReqQue;\this.elv == new ALSElevator();
+<i>14</i>&nbsp;         *      \this.first == 1;
+<i>15</i>&nbsp;         */
+<b class="fc"><i>16</i>&nbsp;        que = new ReqQue();</b>
+<b class="fc"><i>17</i>&nbsp;        elv = new ALSElevator();</b>
+<b class="fc"><i>18</i>&nbsp;        first=1;</b>
+<b class="fc"><i>19</i>&nbsp;    }</b>
+<i>20</i>&nbsp;
+<i>21</i>&nbsp;    public boolean repOK() {
+<i>22</i>&nbsp;        /**
+<i>23</i>&nbsp;         * @invariant:
+<i>24</i>&nbsp;         *      (que!=null) &amp;&amp; (elv!=null) &amp;&amp;
+<i>25</i>&nbsp;         *      (upDown==1 || upDown==0 || upDown==-1) &amp;&amp;
+<i>26</i>&nbsp;         *      (first==1 || first==0) &amp;&amp; preTime&gt;=0;
+<i>27</i>&nbsp;         * @EFFECTS:
+<i>28</i>&nbsp;         *      \result==(que!=null) &amp;&amp; (elv!=null) &amp;&amp;
+<i>29</i>&nbsp;         *      (upDown==1 || upDown==0 || upDown==-1) &amp;&amp;
+<i>30</i>&nbsp;         *      (first==1 || first==0) &amp;&amp; preTime&gt;=0;
+<i>31</i>&nbsp;         */
+<b class="fc"><i>32</i>&nbsp;        return (que!=null) &amp;&amp; (elv!=null) &amp;&amp; (upDown==1 || upDown==0 || upDown==-1) &amp;&amp;</b>
+<i>33</i>&nbsp;                (first==1 || first==0) &amp;&amp; preTime&gt;=0;
+<i>34</i>&nbsp;    }
+<i>35</i>&nbsp;
+<i>36</i>&nbsp;    int checkFloor(String type,String floor,String Direction,String time) {//检查是不是楼层请求
+<i>37</i>&nbsp;        /**
+<i>38</i>&nbsp;         * @REQUIRES:
+<i>39</i>&nbsp;         *      type!=null &amp;&amp; floor !=null &amp;&amp; Direction!=null &amp;&amp; time!=null;
+<i>40</i>&nbsp;         * @MODIFIES:
+<i>41</i>&nbsp;         *      \this.first;\this.preTime;\this.ReqTime;\this.que;
+<i>42</i>&nbsp;         *      \this.Reqtmp;\this.upDown;
+<i>43</i>&nbsp;         * @EFFECTS:
+<i>44</i>&nbsp;         *      如果输入的四个字符串满足一条合法楼层指令的要求，即标志位为&quot;FR&quot;，楼层在[1,10]之间，
+<i>45</i>&nbsp;         *      输入时间在[0,Integer.MAX_VALUE]之间，且不为第一条指令或者为第一条指令但是为
+<i>46</i>&nbsp;         *      [FR,1,UUP,0]，且时间不早于前一条指令时间，且楼层满足在1楼的没有向下，在10楼的没有
+<i>47</i>&nbsp;         *      向上，则其被添加到que，并且修改preTime,Reqtmp,first，upDown，最终返回1，否则返
+<i>48</i>&nbsp;         *      回0.中途若有异常，捕获之后返回0.
+<i>49</i>&nbsp;         */
+<i>50</i>&nbsp;        try {
+<b class="fc"><i>51</i>&nbsp;            if (type.equals(&quot;FR&quot;) &amp;&amp; (Integer.parseInt(floor)&lt;11 &amp;&amp; Integer.parseInt(floor)&gt;0)</b>
+<b class="fc"><i>52</i>&nbsp;                    &amp;&amp; (Direction.equals(&quot;UP&quot;)||Direction.equals(&quot;DOWN&quot;)) &amp;&amp; (Long.parseLong(time)&gt;=0</b>
+<b class="fc"><i>53</i>&nbsp;                    &amp;&amp; Long.parseLong(time)&lt;=Integer.MAX_VALUE) ) {</b>
+<b class="fc"><i>54</i>&nbsp;                if (first==1 &amp;&amp; !(type.equals(&quot;FR&quot;) &amp;&amp; Long.parseLong(time)==0</b>
+<b class="fc"><i>55</i>&nbsp;                        &amp;&amp; Integer.parseInt(floor)==1 &amp;&amp; Direction.equals(&quot;UP&quot;)))</b>
+<b class="fc"><i>56</i>&nbsp;                    return 0;//第一条指令时刻不是0，非法</b>
+<b class="fc"><i>57</i>&nbsp;                if (Long.parseLong(time)&lt;preTime) return 0;//时间乱序，非法</b>
+<b class="fc"><i>58</i>&nbsp;                upDown = Direction.equals(&quot;UP&quot;)? 1:0;</b>
+<i>59</i>&nbsp;                //一个楼层按钮同一时刻只能发出一个上行或下行请求
+<b class="fc"><i>60</i>&nbsp;                if ((Integer.parseInt(floor)==1 &amp;&amp; Direction.equals(&quot;DOWN&quot;))//第1层和第10层的错误请求方向，非法</b>
+<b class="fc"><i>61</i>&nbsp;                        ||(Integer.parseInt(floor)==10 &amp;&amp; Direction.equals(&quot;UP&quot;))) return 0;</b>
+<b class="fc"><i>62</i>&nbsp;                first = 0;</b>
+<b class="fc"><i>63</i>&nbsp;                preTime = Long.parseLong(time);</b>
+<b class="fc"><i>64</i>&nbsp;                Reqtmp = new Request(type,Integer.parseInt(floor),upDown,Long.parseLong(time));</b>
+<b class="fc"><i>65</i>&nbsp;                que.addReq(Reqtmp);</b>
+<b class="fc"><i>66</i>&nbsp;                return 1;</b>
+<i>67</i>&nbsp;            } else {
+<b class="fc"><i>68</i>&nbsp;                return 0;</b>
+<i>69</i>&nbsp;            }
+<b class="fc"><i>70</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>71</i>&nbsp;            return 0;</b>
+<i>72</i>&nbsp;        }
+<i>73</i>&nbsp;    }
+<i>74</i>&nbsp;
+<i>75</i>&nbsp;    int checkElevator(String type,String floor,String time) {//检查是不是电梯请求
+<i>76</i>&nbsp;        /**
+<i>77</i>&nbsp;         * @REQUIRES:
+<i>78</i>&nbsp;         *      type!=null &amp;&amp; floor !=null &amp;&amp; time!=null;
+<i>79</i>&nbsp;         * @MODIFIES:
+<i>80</i>&nbsp;         *      \this.first;\this.preTime;\this.ReqTime;\this.que;
+<i>81</i>&nbsp;         *      \this.Reqtmp;
+<i>82</i>&nbsp;         * @EFFECTS:
+<i>83</i>&nbsp;         *      如果输入的三个字符串满足一条合法电梯指令的要求，即标志位为&quot;ER&quot;，楼层在[1,10]之间，
+<i>84</i>&nbsp;         *      输入时间在[0,Integer.MAX_VALUE]之间，且不为第一条指令，且时间不早于前一条指令时
+<i>85</i>&nbsp;         *      间，则其被添加到que，并且修改preTime,Reqtmp,first，最终返回1，否则返回0.中途若
+<i>86</i>&nbsp;         *      有异常，捕获之后返回0.
+<i>87</i>&nbsp;         */
+<i>88</i>&nbsp;        try {
+<b class="fc"><i>89</i>&nbsp;            if (type.equals(&quot;ER&quot;) &amp;&amp; (Integer.parseInt(floor)&lt;11 &amp;&amp; Integer.parseInt(floor)&gt;0)</b>
+<b class="fc"><i>90</i>&nbsp;                    &amp;&amp; (Long.parseLong(time)&gt;=0 &amp;&amp; Long.parseLong(time)&lt;=Integer.MAX_VALUE) ) {</b>
+<b class="fc"><i>91</i>&nbsp;                if (first==1)//如果ER是第一条指令，非法，必须是(FR,1,UP,0)</b>
+<b class="fc"><i>92</i>&nbsp;                    return 0;</b>
+<b class="fc"><i>93</i>&nbsp;                if (Long.parseLong(time)&lt;preTime) return 0;//时间乱序，非法</b>
+<b class="fc"><i>94</i>&nbsp;                first = 0;</b>
+<b class="fc"><i>95</i>&nbsp;                preTime = Long.parseLong(time);</b>
+<b class="fc"><i>96</i>&nbsp;                Reqtmp = new Request(type,Integer.parseInt(floor),Long.parseLong(time));</b>
+<b class="fc"><i>97</i>&nbsp;                que.addReq(Reqtmp);</b>
+<b class="fc"><i>98</i>&nbsp;                return 1;</b>
+<i>99</i>&nbsp;            } else {
+<b class="fc"><i>100</i>&nbsp;                return 0;</b>
+<i>101</i>&nbsp;            }
+<b class="fc"><i>102</i>&nbsp;        } catch (Exception e) {</b>
+<b class="fc"><i>103</i>&nbsp;            return 0;</b>
+<i>104</i>&nbsp;        }
+<i>105</i>&nbsp;    }
+<i>106</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-05-28 09:46</div>
+</div>
+</body>
+</html>

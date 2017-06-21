@@ -1,0 +1,281 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.0" icons="true" generate-combined-fragments="true">  
+  <object id="1" language="java" name="OO11.TaxiSys" project="OO_11" file="/OO_11/src/OO11/TaxiSys.java" binary="false" 
+    label="taxiSys" type="class" autoSize="true">    
+    <position height="-1" width="-1" x="149" y="0"/>    
+    <execution id="2">      
+      <position height="1808" width="0" x="0" y="312"/>    
+    </execution>  
+  </object>  
+  <object id="5" language="java" name="OO11.InputRequest" project="OO_11" file="/OO_11/src/OO11/InputRequest.java" 
+    binary="false" label="inputRequest" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="4">      
+      <position height="1754" width="0" x="0" y="339"/>    
+    </execution>  
+  </object>  
+  <object id="36" language="java" name="java.util.Scanner" project="OO_11" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" label="input" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="7">      
+      <position height="27" width="0" x="0" y="366"/>    
+    </execution>    
+    <execution id="9">      
+      <position height="27" width="0" x="0" y="464"/>    
+    </execution>    
+    <execution id="31">      
+      <position height="27" width="0" x="0" y="1887"/>    
+    </execution>  
+  </object>  
+  <object id="37" language="java" name="java.io.PrintStream" project="OO13" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="11">      
+      <position height="27" width="0" x="0" y="562"/>    
+    </execution>  
+  </object>  
+  <object id="38" language="java" name="OO11.gv" project="OO_11" file="/OO_11/src/OO11/gui.java" binary="false" 
+    label="&lt;static&gt;" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="13">      
+      <position height="27" width="0" x="0" y="626"/>    
+    </execution>  
+  </object>  
+  <object id="39" language="java" name="java.io.PrintStream" project="OO13" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="15">      
+      <position height="27" width="0" x="0" y="758"/>    
+    </execution>  
+  </object>  
+  <object id="40" language="java" name="java.io.PrintStream" project="OO13" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="17">      
+      <position height="27" width="0" x="0" y="900"/>    
+    </execution>  
+  </object>  
+  <object id="41" language="java" name="OO11.Customer" project="OO_11" file="/OO_11/src/OO11/Customer.java" 
+    binary="false" label="ct" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="19">      
+      <position height="27" width="0" x="0" y="1086"/>    
+    </execution>  
+  </object>  
+  <object id="42" language="java" name="OO11.RequestQueue" project="OO_11" file="/OO_11/src/OO11/RequestQueue.java" 
+    binary="false" label="customers" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="21">      
+      <position height="184" width="0" x="0" y="1184"/>    
+    </execution>  
+  </object>  
+  <object id="47" language="java" name="java.util.concurrent.BlockingQueue" project="OO_11" 
+    file="D:/Program Files/jre/lib/rt.jar" binary="true" label="customers1" type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="44">      
+      <position height="27" width="0" x="0" y="1260"/>    
+    </execution>  
+  </object>  
+  <object id="48" language="java" name="OO11.Customer" project="OO_11" file="/OO_11/src/OO11/Customer.java" 
+    binary="false" label="customer" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="46">      
+      <position height="27" width="0" x="0" y="1314"/>    
+    </execution>  
+  </object>  
+  <object id="49" language="java" name="OO11.Map" project="OO_11" file="/OO_11/src/OO11/Map.java" binary="false" 
+    label="map" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="23">      
+      <position height="27" width="0" x="0" y="1482"/>    
+    </execution>    
+    <execution id="25">      
+      <position height="27" width="0" x="0" y="1579"/>    
+    </execution>  
+  </object>  
+  <object id="50" language="java" name="java.io.PrintStream" project="OO13" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="27">      
+      <position height="27" width="0" x="0" y="1696"/>    
+    </execution>  
+  </object>  
+  <object id="51" language="java" name="java.io.PrintStream" project="OO13" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="29">      
+      <position height="27" width="0" x="0" y="1803"/>    
+    </execution>  
+  </object>  
+  <object id="52" language="java" name="OO11.MyPrintWriter" project="OO_11" file="/OO_11/src/OO11/MyPrintWriter.java" 
+    binary="false" label="myPrintWriter" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="33">      
+      <position height="27" width="0" x="0" y="1941"/>    
+    </execution>  
+  </object>  
+  <object id="53" language="java" name="java.io.PrintStream" project="OO13" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="35">      
+      <position height="27" width="0" x="0" y="2039"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="54" interaction-operator="LOOP">    
+    <interaction-operand id="55" constraint="while: true">      
+      <fragment refId="8"/>      
+      <fragment refId="12"/>      
+      <fragment refId="56"/>      
+      <fragment refId="57"/>    
+    </interaction-operand>    
+    <combined-fragment id="56" interaction-operator="OPT">      
+      <interaction-operand id="58" constraint="lines.length &gt; 10">        
+        <fragment refId="10"/>      
+      </interaction-operand>    
+    </combined-fragment>    
+    <combined-fragment id="57" interaction-operator="LOOP">      
+      <interaction-operand id="59" constraint="for: lines">        
+        <fragment refId="60"/>        
+        <fragment refId="61"/>        
+        <fragment refId="62"/>      
+      </interaction-operand>      
+      <combined-fragment id="61" interaction-operator="OPT">        
+        <interaction-operand id="63" constraint="(!CR) &amp;&amp; (!CP) &amp;&amp; (!OP)">          
+          <fragment refId="14"/>        
+        </interaction-operand>      
+      </combined-fragment>      
+      <combined-fragment id="62" interaction-operator="LOOP">        
+        <interaction-operand id="64" constraint="while: grp.find()">          
+          <fragment refId="65"/>        
+        </interaction-operand>        
+        <combined-fragment id="65" interaction-operator="NEG">          
+          <interaction-operand id="66" constraint="Exception e">            
+            <fragment refId="16"/>          
+          </interaction-operand>        
+        </combined-fragment>      
+      </combined-fragment>      
+      <combined-fragment id="60" interaction-operator="ALT">        
+        <interaction-operand id="67" constraint="index == 2">          
+          <fragment refId="68"/>        
+        </interaction-operand>        
+        <interaction-operand id="69" constraint="else">          
+          <fragment refId="28"/>        
+        </interaction-operand>        
+        <combined-fragment id="68" interaction-operator="ALT">          
+          <interaction-operand id="70" constraint="position[0] != position[1]">            
+            <fragment refId="71"/>          
+          </interaction-operand>          
+          <interaction-operand id="72" constraint="else">            
+            <fragment refId="26"/>          
+          </interaction-operand>          
+          <combined-fragment id="71" interaction-operator="ALT">            
+            <interaction-operand id="73" constraint="CR">              
+              <fragment refId="18"/>              
+              <fragment refId="74"/>            
+            </interaction-operand>            
+            <interaction-operand id="75" constraint="else">              
+              <fragment refId="76"/>            
+            </interaction-operand>            
+            <combined-fragment id="74" interaction-operator="CRITICAL">              
+              <interaction-operand id="77">                
+                <fragment refId="20"/>                
+                <fragment refId="78"/>              
+              </interaction-operand>              
+              <combined-fragment id="78" interaction-operator="OPT">                
+                <interaction-operand id="79" constraint="customer!=null">                  
+                  <fragment refId="45"/>                  
+                  <fragment refId="43"/>                
+                </interaction-operand>              
+              </combined-fragment>            
+            </combined-fragment>            
+            <combined-fragment id="76" interaction-operator="ALT">              
+              <interaction-operand id="80" constraint="CP">                
+                <fragment refId="22"/>              
+              </interaction-operand>              
+              <interaction-operand id="81" constraint="else">                
+                <fragment refId="24"/>              
+              </interaction-operand>            
+            </combined-fragment>          
+          </combined-fragment>        
+        </combined-fragment>      
+      </combined-fragment>    
+    </combined-fragment>  
+  </combined-fragment>  
+  <combined-fragment id="82" interaction-operator="NEG">    
+    <interaction-operand id="83" constraint="Exception e">      
+      <fragment refId="34"/>    
+    </interaction-operand>  
+  </combined-fragment>  
+  <message id="3" operation="parseInput(OO11.Taxi[]):void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="6" operation="Scanner(java.io.InputStream)" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="7"/>  
+  </message>  
+  <message id="8" operation="nextLine():java.lang.String" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="9"/>  
+  </message>  
+  <message id="10" operation="println(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="11"/>  
+  </message>  
+  <message id="12" operation="getTime():long" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="13"/>  
+  </message>  
+  <message id="14" operation="println(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="15"/>  
+  </message>  
+  <message id="16" operation="println(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="17"/>  
+  </message>  
+  <message id="18" operation="Customer(int,int,long,OO11.MyPrintWriter)" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="19"/>  
+  </message>  
+  <message id="20" operation="offer(OO11.Customer):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="21"/>  
+  </message>  
+  <message id="22" operation="closePath(int,int,OO11.Taxi[]):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="23"/>  
+  </message>  
+  <message id="24" operation="openPath(int,int,OO11.Taxi[]):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="25"/>  
+  </message>  
+  <message id="26" operation="println(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="27"/>  
+  </message>  
+  <message id="28" operation="println(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="29"/>  
+  </message>  
+  <message id="30" operation="close():void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="31"/>  
+  </message>  
+  <message id="32" operation="close():void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="33"/>  
+  </message>  
+  <message id="34" operation="println(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="35"/>  
+  </message>  
+  <message id="43" operation="offer(E):boolean" asynchronous="false">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="44"/>  
+  </message>  
+  <message id="45" operation="setId(int):void" asynchronous="false">    
+    <end type="SOURCE" refId="21"/>    
+    <end type="TARGET" refId="46"/>  
+  </message>
+</sequence-diagram>

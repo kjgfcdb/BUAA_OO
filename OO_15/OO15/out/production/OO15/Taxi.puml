@@ -1,0 +1,22 @@
+@startuml
+scale 350 width
+[*] --> READY
+READY --> IDLE:ticktock==0/
+READY --> READY:200ms之后[ticktock!=0]/
+READY : driving()
+READY : checkTrafficLight(int, int, int)
+READY --> TOCUS:addCust(Customer)/
+READY --> TOCUS:listening()\n[!customers.isEmpty()]/
+TOCUS --> IDLE:pathIndex == path.length()/
+TOCUS : working(int)
+TOCUS --> TOCUS:pathIndex != path.length()/
+TODES --> IDLE:pathIndex == path.length()/
+TODES : working(int)
+TODES --> TODES:pathIndex != path.length()/
+IDLE --> TODES:1s之后\n[前一个状态为TOCUS]/
+IDLE --> READY:1s之后\n[前一个状态为TODES或者READY]/
+note left of READY: READY代表等待服务状态
+note left of TODES: TODES代表服务状态
+note bottom of IDLE:IDLE代表停止运行状态
+note left of TOCUS:TOCUS代表准备服务状态
+@enduml

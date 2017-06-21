@@ -1,0 +1,71 @@
+@startuml
+activate InputRequest
+activate Scheduler
+activate RequestQueue
+activate Customer
+activate Taxi
+activate Map
+activate TrafficLight
+alt CR
+critical
+InputRequest ->> RequestQueue:offer(Customer):void
+end critical
+Scheduler -> gv:getTime():long
+activate gv
+gv --> Scheduler
+destroy gv
+critical
+Scheduler -> RequestQueue:isEmpty():boolean
+RequestQueue --> Scheduler
+end critical
+critical
+Scheduler -> RequestQueue:peek():Customer
+RequestQueue --> Scheduler
+end critical
+Scheduler -> Customer:getTime():long
+Customer --> Scheduler
+loop !customers.isEmpty() && customers.peek().getTime() + 3000 <= t
+critical
+Scheduler -> RequestQueue:poll():Customer
+RequestQueue --> Scheduler
+end critical
+Scheduler -> Customer:tryToGetOn():boolean
+critical
+Customer -> Taxi:getSnapShot:Object[]
+Taxi --> Customer
+end critical
+Customer --> Scheduler
+alt tryToGetOn()==true
+critical
+Customer ->> Taxi:addCust(Customer):void
+end critical
+critical
+Taxi -> Map:SPFA(int,int,Edge[]):String
+Map --> Taxi
+end critical
+critical
+Taxi ->> Map:addTorrent(int,int):void
+end critical
+Taxi -> TrafficLight:getEastWest(int):int
+TrafficLight --> Taxi
+Taxi -> TrafficLight:getSouthNorth(int):int
+TrafficLight --> Taxi
+Taxi ->> Customer:arrivedDes(String):void
+else tryToGetOn()==false
+Scheduler ->> Customer:logFailure():void
+end alt
+end loop
+Scheduler ->> RequestQueue:traverse(Taxi[]):void
+else OP
+InputRequest ->> Map:openPath(int,int,Taxi[]):void
+else CP
+InputRequest ->> Map:closePath(int,int,Taxi[]):void
+end alt
+destroy InputRequest 
+destroy Scheduler
+destroy RequestQueue
+destroy Customer
+destroy Taxi
+destroy Map
+destroy TrafficLight
+@enduml

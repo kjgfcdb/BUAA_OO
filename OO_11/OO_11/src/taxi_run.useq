@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sequence-diagram version="1.2.0" icons="true" automaticImage="JPEG" generate-combined-fragments="true">  
+  <object id="1" language="java" name="OO11.Taxi" project="OO_11" file="/OO_11/src/OO11/Taxi.java" binary="false" 
+    label="taxi" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="2">      
+      <position height="2194" width="0" x="0" y="364"/>    
+    </execution>    
+    <execution id="4">      
+      <position height="2113" width="0" x="0" y="418"/>    
+    </execution>    
+    <execution id="6">      
+      <position height="27" width="0" x="0" y="587"/>    
+    </execution>    
+    <execution id="8">      
+      <position height="27" width="0" x="0" y="654"/>    
+    </execution>    
+    <execution id="16">      
+      <position height="27" width="0" x="0" y="981"/>    
+    </execution>    
+    <execution id="40">      
+      <position height="27" width="0" x="0" y="1816"/>    
+    </execution>    
+    <execution id="44">      
+      <position height="27" width="0" x="0" y="2058"/>    
+    </execution>    
+    <execution id="50">      
+      <position height="27" width="0" x="0" y="2330"/>    
+    </execution>  
+  </object>  
+  <object id="55" language="java" name="OO11.Map" project="OO_11" file="/OO_11/src/OO11/Map.java" binary="false" 
+    label="map" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="10">      
+      <position height="27" width="0" x="0" y="738"/>    
+    </execution>  
+  </object>  
+  <object id="56" language="java" name="OO11.TaxiGUI" project="OO_11" file="/OO_11/src/OO11/gui.java" binary="false" 
+    label="taxiGUI" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="12">      
+      <position height="27" width="0" x="0" y="802"/>    
+    </execution>    
+    <execution id="22">      
+      <position height="27" width="0" x="0" y="1260"/>    
+    </execution>    
+    <execution id="36">      
+      <position height="27" width="0" x="0" y="1638"/>    
+    </execution>    
+    <execution id="52">      
+      <position height="27" width="0" x="0" y="2423"/>    
+    </execution>  
+  </object>  
+  <object id="57" language="java" name="java.awt.Point" project="OO_11" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="14">      
+      <position height="27" width="0" x="0" y="856"/>    
+    </execution>  
+  </object>  
+  <object id="58" language="java" name="java.util.Queue" project="OO13" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" label="customers" type="interface" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="18">      
+      <position height="27" width="0" x="0" y="1152"/>    
+    </execution>    
+    <execution id="26">      
+      <position height="27" width="0" x="0" y="1368"/>    
+    </execution>    
+    <execution id="30">      
+      <position height="27" width="0" x="0" y="1476"/>    
+    </execution>    
+    <execution id="42">      
+      <position height="27" width="0" x="0" y="1977"/>    
+    </execution>    
+    <execution id="46">      
+      <position height="27" width="0" x="0" y="2142"/>    
+    </execution>  
+  </object>  
+  <object id="59" language="java" name="java.io.PrintStream" project="OO13" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="20">      
+      <position height="27" width="0" x="0" y="1206"/>    
+    </execution>  
+  </object>  
+  <object id="60" language="java" name="java.awt.Point" project="OO_11" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="24">      
+      <position height="27" width="0" x="0" y="1314"/>    
+    </execution>  
+  </object>  
+  <object id="61" language="java" name="OO11.Customer" project="OO_11" file="/OO_11/src/OO11/Customer.java" 
+    binary="false" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="28">      
+      <position height="27" width="0" x="0" y="1422"/>    
+    </execution>  
+  </object>  
+  <object id="62" language="java" name="OO11.Customer" project="OO_11" file="/OO_11/src/OO11/Customer.java" 
+    binary="false" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="32">      
+      <position height="27" width="0" x="0" y="1530"/>    
+    </execution>  
+  </object>  
+  <object id="63" language="java" name="java.io.PrintStream" project="OO13" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="34">      
+      <position height="27" width="0" x="0" y="1584"/>    
+    </execution>  
+  </object>  
+  <object id="64" language="java" name="java.awt.Point" project="OO_11" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="38">      
+      <position height="27" width="0" x="0" y="1692"/>    
+    </execution>  
+  </object>  
+  <object id="65" language="java" name="java.io.PrintStream" project="OO13" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="48">      
+      <position height="27" width="0" x="0" y="2196"/>    
+    </execution>  
+  </object>  
+  <object id="66" language="java" name="java.awt.Point" project="OO_11" file="D:/Program Files/jre/lib/rt.jar" 
+    binary="true" type="class" autoSize="true">    
+    <position height="0" width="0" x="0" y="0"/>    
+    <execution id="54">      
+      <position height="27" width="0" x="0" y="2477"/>    
+    </execution>  
+  </object>  
+  <combined-fragment id="67" interaction-operator="LOOP">    
+    <interaction-operand id="68" constraint="while: true">      
+      <fragment refId="69"/>    
+    </interaction-operand>    
+    <combined-fragment id="69" interaction-operator="ALT">      
+      <interaction-operand id="70" constraint="state == State.READY">        
+        <fragment refId="71"/>      
+      </interaction-operand>      
+      <interaction-operand id="72" constraint="else">        
+        <fragment refId="73"/>      
+      </interaction-operand>      
+      <combined-fragment id="71" interaction-operator="ALT">        
+        <interaction-operand id="74" constraint="tickTock == 0"/>        
+        <interaction-operand id="75" constraint="else">          
+          <fragment refId="5"/>          
+          <fragment refId="7"/>          
+          <fragment refId="11"/>          
+          <fragment refId="13"/>          
+          <fragment refId="76"/>          
+          <fragment refId="77"/>        
+        </interaction-operand>        
+        <combined-fragment id="76" interaction-operator="CRITICAL">          
+          <interaction-operand id="78">            
+            <fragment refId="9"/>          
+          </interaction-operand>        
+        </combined-fragment>        
+        <combined-fragment id="77" interaction-operator="CRITICAL">          
+          <interaction-operand id="79">            
+            <fragment refId="15"/>          
+          </interaction-operand>        
+        </combined-fragment>      
+      </combined-fragment>      
+      <combined-fragment id="73" interaction-operator="ALT">        
+        <interaction-operand id="80" constraint="state == State.TOCUS">          
+          <fragment refId="81"/>        
+        </interaction-operand>        
+        <interaction-operand id="82" constraint="else">          
+          <fragment refId="83"/>        
+        </interaction-operand>        
+        <combined-fragment id="81" interaction-operator="ALT">          
+          <interaction-operand id="84" constraint="pathIndex == path.length()">            
+            <fragment refId="21"/>            
+            <fragment refId="19"/>            
+            <fragment refId="33"/>            
+            <fragment refId="25"/>            
+            <fragment refId="37"/>            
+            <fragment refId="29"/>            
+            <fragment refId="23"/>            
+            <fragment refId="27"/>            
+            <fragment refId="31"/>            
+            <fragment refId="35"/>            
+            <fragment refId="17"/>          
+          </interaction-operand>          
+          <interaction-operand id="85" constraint="else">            
+            <fragment refId="39"/>          
+          </interaction-operand>        
+        </combined-fragment>        
+        <combined-fragment id="83" interaction-operator="ALT">          
+          <interaction-operand id="86" constraint="state == State.TODES">            
+            <fragment refId="87"/>          
+          </interaction-operand>          
+          <interaction-operand id="88" constraint="else">            
+            <fragment refId="53"/>            
+            <fragment refId="51"/>          
+          </interaction-operand>          
+          <combined-fragment id="87" interaction-operator="ALT">            
+            <interaction-operand id="89" constraint="pathIndex == path.length()">              
+              <fragment refId="41"/>              
+              <fragment refId="90"/>              
+              <fragment refId="43"/>            
+            </interaction-operand>            
+            <interaction-operand id="91" constraint="else">              
+              <fragment refId="49"/>            
+            </interaction-operand>            
+            <combined-fragment id="90" interaction-operator="LOOP">              
+              <interaction-operand id="92" 
+                constraint="while: !customers.isEmpty() &amp;&amp; customers.peek().equals(c)">                
+                <fragment refId="45"/>                
+                <fragment refId="47"/>              
+              </interaction-operand>            
+            </combined-fragment>          
+          </combined-fragment>        
+        </combined-fragment>      
+      </combined-fragment>    
+    </combined-fragment>  
+  </combined-fragment>  
+  <message id="3" operation="run():void" asynchronous="false">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="4"/>  
+  </message>  
+  <message id="5" operation="driving():void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="6"/>  
+  </message>  
+  <message id="7" operation="checkTrafficLight(int,int,int):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="8"/>  
+  </message>  
+  <message id="9" operation="addTorrent(int,int):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="10"/>  
+  </message>  
+  <message id="11" operation="SetTaxiStatus(int,java.awt.Point,int):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="12"/>  
+  </message>  
+  <message id="13" operation="Point(int,int)" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="14"/>  
+  </message>  
+  <message id="15" operation="listening():void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="16"/>  
+  </message>  
+  <message id="17" operation="peek():E" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="18"/>  
+  </message>  
+  <message id="19" operation="println(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="20"/>  
+  </message>  
+  <message id="21" operation="SetTaxiStatus(int,java.awt.Point,int):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="22"/>  
+  </message>  
+  <message id="23" operation="Point(int,int)" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="24"/>  
+  </message>  
+  <message id="25" operation="peek():E" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="26"/>  
+  </message>  
+  <message id="27" operation="getEnd():int" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="28"/>  
+  </message>  
+  <message id="29" operation="peek():E" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="30"/>  
+  </message>  
+  <message id="31" operation="getEnd():int" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="32"/>  
+  </message>  
+  <message id="33" operation="println(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="34"/>  
+  </message>  
+  <message id="35" operation="SetTaxiStatus(int,java.awt.Point,int):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="36"/>  
+  </message>  
+  <message id="37" operation="Point(int,int)" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="38"/>  
+  </message>  
+  <message id="39" operation="working(int):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="40"/>  
+  </message>  
+  <message id="41" operation="peek():E" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="42"/>  
+  </message>  
+  <message id="43" operation="finishedTask(OO11.Customer):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="44"/>  
+  </message>  
+  <message id="45" operation="poll():E" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="46"/>  
+  </message>  
+  <message id="47" operation="println(java.lang.String):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="48"/>  
+  </message>  
+  <message id="49" operation="working(int):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="50"/>  
+  </message>  
+  <message id="51" operation="SetTaxiStatus(int,java.awt.Point,int):void" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="52"/>  
+  </message>  
+  <message id="53" operation="Point(int,int)" asynchronous="false">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="54"/>  
+  </message>
+</sequence-diagram>

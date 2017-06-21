@@ -1,0 +1,139 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ReqQue</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ReqQue (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Class, %
+</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ReqQue</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (1/ 1)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/ 9)
+  </span>
+</td>
+</tr>
+
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.util.ArrayList;
+<i>2</i>&nbsp;
+<i>3</i>&nbsp;class ReqQue{
+<i>4</i>&nbsp;    private ArrayList&lt;Request&gt; que;
+<b class="fc"><i>5</i>&nbsp;    ReqQue() {</b>
+<i>6</i>&nbsp;        /**
+<i>7</i>&nbsp;         * @REQUIRES:None;
+<i>8</i>&nbsp;         * @MODIFIES:\this.que;
+<i>9</i>&nbsp;         * @EFFECTS:\this.que = new ArrayList&lt;Request&gt;();
+<i>10</i>&nbsp;         */
+<b class="fc"><i>11</i>&nbsp;        que = new ArrayList&lt;Request&gt;();</b>
+<b class="fc"><i>12</i>&nbsp;    }</b>
+<i>13</i>&nbsp;
+<i>14</i>&nbsp;    public boolean repOK() {
+<i>15</i>&nbsp;        /**
+<i>16</i>&nbsp;         * @invariant:
+<i>17</i>&nbsp;         *      que!=null;
+<i>18</i>&nbsp;         * @EFFECTS:
+<i>19</i>&nbsp;         *      \result==que!=null;
+<i>20</i>&nbsp;         */
+<b class="fc"><i>21</i>&nbsp;        return que!=null;</b>
+<i>22</i>&nbsp;    }
+<i>23</i>&nbsp;
+<i>24</i>&nbsp;    void addReq(Request r) {
+<i>25</i>&nbsp;        /**
+<i>26</i>&nbsp;         * @REQUIRES:r!=null;
+<i>27</i>&nbsp;         * @MODIFIES:\this.que;
+<i>28</i>&nbsp;         * @EFFECTS:
+<i>29</i>&nbsp;         *      \this.que.size() = \old(\this).que.size()+1 &amp;&amp;
+<i>30</i>&nbsp;         *      \this.que.contains(r);
+<i>31</i>&nbsp;         */
+<b class="fc"><i>32</i>&nbsp;        que.add(r);</b>
+<b class="fc"><i>33</i>&nbsp;    }</b>
+<i>34</i>&nbsp;
+<i>35</i>&nbsp;    int size() {
+<i>36</i>&nbsp;        /**
+<i>37</i>&nbsp;         * @REQUIRES:None;
+<i>38</i>&nbsp;         * @MODIFIES:None;
+<i>39</i>&nbsp;         * @EFFECTS:
+<i>40</i>&nbsp;         *      \result==\this.que.size();
+<i>41</i>&nbsp;         */
+<b class="fc"><i>42</i>&nbsp;        return que.size();</b>
+<i>43</i>&nbsp;    }
+<i>44</i>&nbsp;
+<i>45</i>&nbsp;    Request get(int i) {
+<i>46</i>&nbsp;        /**
+<i>47</i>&nbsp;         * @REQUIRES:None;
+<i>48</i>&nbsp;         * @MODIFIES:None;
+<i>49</i>&nbsp;         * @EFFECTS:
+<i>50</i>&nbsp;         *      (i&lt;0 || i&gt;=que.size()) ==&gt; \result==null;
+<i>51</i>&nbsp;         *      (0&lt;=i&amp;&amp;i&lt;que.size()) ==&gt; \result==que.get(i);
+<i>52</i>&nbsp;         */
+<b class="fc"><i>53</i>&nbsp;        if (i&lt;0 || i&gt;=que.size()) return null;</b>
+<b class="fc"><i>54</i>&nbsp;        return que.get(i);</b>
+<i>55</i>&nbsp;    }
+<i>56</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-05-28 09:46</div>
+</div>
+</body>
+</html>

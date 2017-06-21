@@ -1,0 +1,376 @@
+
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html id="htmlId">
+<head>
+  <title>Coverage Report :: ALSScheduler</title>
+  <style type="text/css">
+    @import "../../.css/coverage.css";
+  </style>
+</head>
+
+<body>
+<div class="header"></div>
+
+<div class="content">
+<div class="breadCrumbs">
+    [ <a href="../../index.html">all classes</a> ]
+    [ <a href="../index.html">&lt;empty package name&gt;</a> ]
+</div>
+
+<h1>Coverage Summary for Class: ALSScheduler (&lt;empty package name&gt;)</h1>
+
+<table class="coverageStats">
+
+<tr>
+  <th class="name">Class</th>
+<th class="coverageStat 
+">
+  Method, %
+</th>
+<th class="coverageStat 
+">
+  Line, %
+</th>
+</tr>
+<tr>
+  <td class="name">ALSScheduler</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (5/ 5)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (142/ 142)
+  </span>
+</td>
+</tr>
+  <tr>
+    <td class="name">ALSScheduler$1</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+  </tr>
+  <tr>
+    <td class="name">ALSScheduler$2</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (2/ 2)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (3/ 3)
+  </span>
+</td>
+  </tr>
+<tr>
+  <td class="name"><strong>total</strong></td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (9/ 9)
+  </span>
+</td>
+<td class="coverageStat">
+  <span class="percent">
+    100%
+  </span>
+  <span class="absValue">
+    (148/ 148)
+  </span>
+</td>
+</tr>
+</table>
+
+<br/>
+<br/>
+
+
+<div class="sourceCode"><i>1</i>&nbsp;import java.util.Comparator;
+<i>2</i>&nbsp;import java.util.LinkedList;
+<i>3</i>&nbsp;import java.util.PriorityQueue;
+<i>4</i>&nbsp;import java.util.Queue;
+<i>5</i>&nbsp;import java.util.concurrent.BlockingQueue;
+<i>6</i>&nbsp;import java.util.concurrent.LinkedBlockingDeque;
+<i>7</i>&nbsp;
+<i>8</i>&nbsp;class ALSScheduler extends Scheduler{
+<i>9</i>&nbsp;    private PriorityQueue&lt;Request&gt; incPriQue;
+<i>10</i>&nbsp;    private PriorityQueue&lt;Request&gt; decPriQue;
+<i>11</i>&nbsp;
+<i>12</i>&nbsp;    ALSScheduler() {
+<i>13</i>&nbsp;        /**
+<i>14</i>&nbsp;         * @REQUIRES:None;
+<i>15</i>&nbsp;         * @MODIFIES:\this.incPriQue;\this.decPriQue;\this.que;\this.elv;\this.first;
+<i>16</i>&nbsp;         * @EFFECTS:
+<i>17</i>&nbsp;         *      \this.incPriQue == new PriorityQueue();
+<i>18</i>&nbsp;         *      \this.decPriQue == new PriorityQueue();
+<i>19</i>&nbsp;         *      \this.que == new ReqQue();
+<i>20</i>&nbsp;         *      \this.elv == new ALSElevator();
+<i>21</i>&nbsp;         *      \this.first == 1;
+<i>22</i>&nbsp;         */
+<b class="fc"><i>23</i>&nbsp;        super();</b>
+<b class="fc"><i>24</i>&nbsp;        incPriQue = new PriorityQueue&lt;&gt;(new Comparator&lt;Request&gt;() {//递增优先队列</b>
+<i>25</i>&nbsp;            @Override
+<i>26</i>&nbsp;            public int compare(Request o1, Request o2) {
+<b class="fc"><i>27</i>&nbsp;                if (o1.getFloor()!=o2.getFloor()) return o1.getFloor()-o2.getFloor();</b>
+<b class="fc"><i>28</i>&nbsp;                else return o1.getOrder()-o2.getOrder();</b>
+<i>29</i>&nbsp;            }
+<i>30</i>&nbsp;        });
+<b class="fc"><i>31</i>&nbsp;        decPriQue = new PriorityQueue&lt;&gt;(new Comparator&lt;Request&gt;() {//递降优先队列</b>
+<i>32</i>&nbsp;            @Override
+<i>33</i>&nbsp;            public int compare(Request o1, Request o2) {
+<b class="fc"><i>34</i>&nbsp;                if (o1.getFloor()!=o2.getFloor()) return o2.getFloor()-o1.getFloor();</b>
+<b class="fc"><i>35</i>&nbsp;                else return o1.getOrder()-o2.getOrder();</b>
+<i>36</i>&nbsp;            }
+<i>37</i>&nbsp;        });
+<b class="fc"><i>38</i>&nbsp;    }</b>
+<i>39</i>&nbsp;
+<i>40</i>&nbsp;    public boolean repOK() {
+<i>41</i>&nbsp;        /**
+<i>42</i>&nbsp;         * @invariant:
+<i>43</i>&nbsp;         *      super.repOK() &amp;&amp; incPriQue!=null &amp;&amp; decPriQue!=null;
+<i>44</i>&nbsp;         * @EFFECTS:
+<i>45</i>&nbsp;         *      \result==super.repOK() &amp;&amp; incPriQue!=null &amp;&amp; decPriQue!=null;
+<i>46</i>&nbsp;         */
+<b class="fc"><i>47</i>&nbsp;        return super.repOK() &amp;&amp; incPriQue!=null &amp;&amp; decPriQue!=null;</b>
+<i>48</i>&nbsp;    }
+<i>49</i>&nbsp;
+<i>50</i>&nbsp;    void compute() {//计算并输出
+<i>51</i>&nbsp;        /**
+<i>52</i>&nbsp;         * @REQUIRES:None;
+<i>53</i>&nbsp;         * @MODIFIES:
+<i>54</i>&nbsp;         *      \this.Reqtmp;\this.elv;\this.upDown;\this.incPriQue;\this.decPriQue;
+<i>55</i>&nbsp;         * @EFFECTS:
+<i>56</i>&nbsp;         *      逐个遍历请求队列中的请求，从中剩余请求中选出能被电梯稍带的请求，更新电梯状态并执行相应请求(输出).
+<i>57</i>&nbsp;         *
+<i>58</i>&nbsp;         */
+<b class="fc"><i>59</i>&nbsp;        for (int i=0;i&lt;que.size();i++) {//逐个遍历请求列表</b>
+<b class="fc"><i>60</i>&nbsp;            Reqtmp = que.get(i);</b>
+<b class="fc"><i>61</i>&nbsp;            if (Reqtmp.getAlreadyOut()==0 &amp;&amp; Reqtmp.getDuplicatedOut()==0 &amp;&amp; Reqtmp.getInvalidOut()==0) {//请求未输出</b>
+<b class="fc"><i>62</i>&nbsp;                Reqtmp.setOrder(i);</b>
+<b class="fc"><i>63</i>&nbsp;                boolean timeUpdated = elv.updateComTime(Reqtmp.getTime());//用主指令的时间更新电梯的完成时间</b>
+<b class="fc"><i>64</i>&nbsp;                upDown = elv.getState(Reqtmp);</b>
+<b class="fc"><i>65</i>&nbsp;                if (upDown!=0) {//方向为UP/DOWN</b>
+<b class="fc"><i>66</i>&nbsp;                    Reqtmp.setAlreadyOut(1);</b>
+<b class="fc"><i>67</i>&nbsp;                    if(upDown==1) incPriQue.offer(Reqtmp);</b>
+<b class="fc"><i>68</i>&nbsp;                    else decPriQue.offer(Reqtmp);</b>
+<b class="fc"><i>69</i>&nbsp;                    PriorityQueue&lt;Request&gt; PriQue = upDown==1?incPriQue:decPriQue;</b>
+<b class="fc"><i>70</i>&nbsp;                    for (int j = i + 1; j &lt; que.size(); j++) {</b>
+<b class="fc"><i>71</i>&nbsp;                        Request rj = que.get(j);</b>
+<b class="fc"><i>72</i>&nbsp;                        if (rj.getAlreadyOut()==1 ||rj.getDuplicatedOut()==1</b>
+<b class="fc"><i>73</i>&nbsp;                                || rj.getInvalidOut()==1) continue;</b>
+<b class="fc"><i>74</i>&nbsp;                        rj.setOrder(j);</b>
+<b class="fc"><i>75</i>&nbsp;                        Queue&lt;Request&gt; sameReq = new LinkedList&lt;&gt;();</b>
+<b class="fc"><i>76</i>&nbsp;                        boolean sameDir = upDown==1?rj.getFloor()&gt;elv.getCurPos():</b>
+<b class="fc"><i>77</i>&nbsp;                                                     rj.getFloor()&lt;elv.getCurPos();//方向相同</b>
+<b class="fc"><i>78</i>&nbsp;                        boolean FRWarn = false;//注意楼层请求</b>
+<b class="fc"><i>79</i>&nbsp;                        int maxFloor=0;//最高楼层</b>
+<b class="fc"><i>80</i>&nbsp;                        int minFloor = 11;//最底层</b>
+<i>81</i>&nbsp;                        //计算响应时间resTime
+<b class="fc"><i>82</i>&nbsp;                        double resTime = Math.abs(rj.getFloor()-elv.getCurPos())*0.5</b>
+<b class="fc"><i>83</i>&nbsp;                                +elv.getComTime();</b>
+<b class="fc"><i>84</i>&nbsp;                        for (Request reqPri:PriQue) {</b>
+<b class="fc"><i>85</i>&nbsp;                            if (maxFloor&lt;reqPri.getFloor()) maxFloor = reqPri.getFloor();</b>
+<b class="fc"><i>86</i>&nbsp;                            if (minFloor&gt;reqPri.getFloor()) minFloor = reqPri.getFloor();</b>
+<b class="fc"><i>87</i>&nbsp;                            if (upDown==1 &amp;&amp; reqPri.getFloor()&lt;rj.getFloor()) resTime+=1;</b>
+<b class="fc"><i>88</i>&nbsp;                            if (upDown==-1 &amp;&amp; reqPri.getFloor()&gt;rj.getFloor()) resTime+=1;</b>
+<b class="fc"><i>89</i>&nbsp;                            if (reqPri.getFloor()==rj.getFloor()) sameReq.offer(reqPri);</b>
+<b class="fc"><i>90</i>&nbsp;                        }</b>
+<b class="fc"><i>91</i>&nbsp;                        if (rj.getType().equals(&quot;ER&quot;) ||</b>
+<b class="fc"><i>92</i>&nbsp;                                (upDown==1 &amp;&amp; rj.getType().equals(&quot;FR&quot;) &amp;&amp; rj.getUpDown()==1 &amp;&amp; rj.getFloor()&lt;=maxFloor) ||</b>
+<b class="fc"><i>93</i>&nbsp;                                (upDown==-1 &amp;&amp; rj.getType().equals(&quot;FR&quot;) &amp;&amp; rj.getUpDown()==0 &amp;&amp; rj.getFloor()&gt;=minFloor)) {</b>
+<b class="fc"><i>94</i>&nbsp;                            FRWarn = true;</b>
+<i>95</i>&nbsp;                        }
+<b class="fc"><i>96</i>&nbsp;                        double arrTime = 0;//检测主请求到达时间，如果到达时间&lt;=请求产生时间，那么不可能捎带</b>
+<b class="fc"><i>97</i>&nbsp;                        for (Request reqPri:PriQue) {</b>
+<b class="fc"><i>98</i>&nbsp;                            if (upDown==1 &amp;&amp; reqPri.getFloor()&lt;maxFloor) arrTime+=1;</b>
+<b class="fc"><i>99</i>&nbsp;                            if (upDown==-1 &amp;&amp; reqPri.getFloor()&gt;minFloor) arrTime+=1;</b>
+<b class="fc"><i>100</i>&nbsp;                        }</b>
+<b class="fc"><i>101</i>&nbsp;                        arrTime = upDown==1? arrTime+Math.abs(maxFloor-elv.getCurPos())*0.5+elv.getComTime():</b>
+<b class="fc"><i>102</i>&nbsp;                                arrTime+Math.abs(minFloor-elv.getCurPos())*0.5+elv.getComTime();</b>
+<b class="fc"><i>103</i>&nbsp;                        if (resTime&gt;rj.getTime() &amp;&amp; sameDir &amp;&amp; FRWarn &amp;&amp; arrTime&gt;rj.getTime()) {//可以捎带请求</b>
+<b class="fc"><i>104</i>&nbsp;                            if (sameReq.size()==0) {</b>
+<b class="fc"><i>105</i>&nbsp;                                rj.setAlreadyOut(1);</b>
+<b class="fc"><i>106</i>&nbsp;                                PriQue.offer(rj);</b>
+<i>107</i>&nbsp;                                //重新从前往后访问找到所有可以被加入优先队列的请求
+<b class="fc"><i>108</i>&nbsp;                                for (int k=i+1;k&lt;j;k++) {</b>
+<b class="fc"><i>109</i>&nbsp;                                    Request rk = que.get(k);</b>
+<b class="fc"><i>110</i>&nbsp;                                    if (rk.getAlreadyOut()==1 ||rk.getDuplicatedOut()==1 || rk.getInvalidOut()==1) continue;</b>
+<b class="fc"><i>111</i>&nbsp;                                    rk.setOrder(k);</b>
+<b class="fc"><i>112</i>&nbsp;                                    if (checkPickUp(rk,PriQue,upDown)) {</b>
+<b class="fc"><i>113</i>&nbsp;                                        rk.setAlreadyOut(1);</b>
+<b class="fc"><i>114</i>&nbsp;                                        PriQue.offer(rk);</b>
+<i>115</i>&nbsp;                                    }
+<i>116</i>&nbsp;                                }
+<i>117</i>&nbsp;                            } else {
+<b class="fc"><i>118</i>&nbsp;                                boolean isInvalid = false;</b>
+<b class="fc"><i>119</i>&nbsp;                                for (Request rtp:sameReq) {//检查是否存在重复请求或者无效请求</b>
+<b class="fc"><i>120</i>&nbsp;                                    if (checkBulb(rtp,rj)) {</b>
+<b class="fc"><i>121</i>&nbsp;                                        isInvalid = true;</b>
+<b class="fc"><i>122</i>&nbsp;                                        rj.setInvalidOut(1);</b>
+<b class="fc"><i>123</i>&nbsp;                                        PriQue.offer(rj);</b>
+<b class="fc"><i>124</i>&nbsp;                                        break;</b>
+<i>125</i>&nbsp;                                    }
+<b class="fc"><i>126</i>&nbsp;                                }</b>
+<b class="fc"><i>127</i>&nbsp;                                if (!isInvalid) {</b>
+<b class="fc"><i>128</i>&nbsp;                                    rj.setDuplicatedOut(1);</b>
+<b class="fc"><i>129</i>&nbsp;                                    PriQue.offer(rj);</b>
+<i>130</i>&nbsp;                                }
+<b class="fc"><i>131</i>&nbsp;                            }</b>
+<b class="fc"><i>132</i>&nbsp;                        } else if (rj.getTime()&lt;=resTime+1) {//不可捎带，但可能无效</b>
+<b class="fc"><i>133</i>&nbsp;                            boolean flag = false;</b>
+<b class="fc"><i>134</i>&nbsp;                            for (Request rtp:sameReq) {</b>
+<b class="fc"><i>135</i>&nbsp;                                if (checkBulb(rtp,rj)) {</b>
+<b class="fc"><i>136</i>&nbsp;                                    rj.setInvalidOut(1);</b>
+<b class="fc"><i>137</i>&nbsp;                                    if (!flag) {</b>
+<b class="fc"><i>138</i>&nbsp;                                        PriQue.offer(rj);</b>
+<b class="fc"><i>139</i>&nbsp;                                        flag = true;</b>
+<i>140</i>&nbsp;                                    }
+<i>141</i>&nbsp;                                }
+<b class="fc"><i>142</i>&nbsp;                            }</b>
+<i>143</i>&nbsp;                        }
+<b class="fc"><i>144</i>&nbsp;                        sameReq.clear();</b>
+<i>145</i>&nbsp;                    }
+<b class="fc"><i>146</i>&nbsp;                    while (!PriQue.isEmpty()) {</b>
+<b class="fc"><i>147</i>&nbsp;                        if (PriQue.peek().getInvalidOut()!=1) {</b>
+<b class="fc"><i>148</i>&nbsp;                            elv.update(PriQue.poll());</b>
+<b class="fc"><i>149</i>&nbsp;                            System.out.println(elv.toString());</b>
+<i>150</i>&nbsp;                        } else {
+<b class="fc"><i>151</i>&nbsp;                            System.out.println(&quot;SAME &quot;+PriQue.poll().toString());//无效输入，不输出结果，只输出请求</b>
+<i>152</i>&nbsp;                        }
+<i>153</i>&nbsp;                    }
+<b class="fc"><i>154</i>&nbsp;                } else {//方向为STILL</b>
+<b class="fc"><i>155</i>&nbsp;                    if (timeUpdated) {</b>
+<b class="fc"><i>156</i>&nbsp;                        Reqtmp.setAlreadyOut(1);</b>
+<i>157</i>&nbsp;                    } else {//这意味着请求的时间≤电梯完成时间
+<b class="fc"><i>158</i>&nbsp;                        Request r = elv.getLastReq();</b>
+<b class="fc"><i>159</i>&nbsp;                        if (checkBulb(r,Reqtmp)) {</b>
+<b class="fc"><i>160</i>&nbsp;                            Reqtmp.setInvalidOut(1);</b>
+<i>161</i>&nbsp;                        } else {
+<b class="fc"><i>162</i>&nbsp;                            Reqtmp.setAlreadyOut(1);</b>
+<i>163</i>&nbsp;                        }
+<i>164</i>&nbsp;                    }
+<b class="fc"><i>165</i>&nbsp;                    BlockingQueue&lt;Request&gt; queSTILL = new LinkedBlockingDeque&lt;&gt;();</b>
+<b class="fc"><i>166</i>&nbsp;                    queSTILL.offer(Reqtmp);</b>
+<b class="fc"><i>167</i>&nbsp;                    for (int j = i + 1; j &lt; que.size(); j++) {</b>
+<b class="fc"><i>168</i>&nbsp;                        Request rj = que.get(j);</b>
+<b class="fc"><i>169</i>&nbsp;                        if (rj.getFloor()==Reqtmp.getFloor()) {</b>
+<b class="fc"><i>170</i>&nbsp;                            if (elv.getComTime()&gt;=rj.getTime()) {</b>
+<b class="fc"><i>171</i>&nbsp;                                boolean tot = false;</b>
+<b class="fc"><i>172</i>&nbsp;                                for (Request req:queSTILL) {</b>
+<b class="fc"><i>173</i>&nbsp;                                    if (checkBulb(req, rj) &amp;&amp; !tot) {</b>
+<b class="fc"><i>174</i>&nbsp;                                        rj.setInvalidOut(1);</b>
+<b class="fc"><i>175</i>&nbsp;                                        queSTILL.offer(rj);</b>
+<b class="fc"><i>176</i>&nbsp;                                        tot = true;</b>
+<i>177</i>&nbsp;                                    }
+<b class="fc"><i>178</i>&nbsp;                                }</b>
+<i>179</i>&nbsp;                            }
+<i>180</i>&nbsp;                        }
+<i>181</i>&nbsp;                    }
+<b class="fc"><i>182</i>&nbsp;                    while (!queSTILL.isEmpty()) {</b>
+<b class="fc"><i>183</i>&nbsp;                        if (queSTILL.peek().getInvalidOut()!=1) {</b>
+<b class="fc"><i>184</i>&nbsp;                            elv.update(queSTILL.poll());</b>
+<b class="fc"><i>185</i>&nbsp;                            System.out.println(elv.toString());</b>
+<i>186</i>&nbsp;                        } else {
+<b class="fc"><i>187</i>&nbsp;                            System.out.println(&quot;SAME &quot;+queSTILL.poll().toString());//无效输入，不输出结果，只输出请求</b>
+<i>188</i>&nbsp;                        }
+<i>189</i>&nbsp;                    }
+<i>190</i>&nbsp;                }
+<i>191</i>&nbsp;            }
+<i>192</i>&nbsp;        }
+<b class="fc"><i>193</i>&nbsp;    }</b>
+<i>194</i>&nbsp;
+<i>195</i>&nbsp;    boolean checkBulb(Request r1,Request r2) {//检测是否存在重复灯光
+<i>196</i>&nbsp;        /**
+<i>197</i>&nbsp;         * @EFFECTS:
+<i>198</i>&nbsp;         *      (r1==null || r2==null) ==&gt; \result==false;
+<i>199</i>&nbsp;         *      (r1.getType().equals(&quot;FR&quot;) &amp;&amp; r2.getType().equals(&quot;FR&quot;) &amp;&amp;
+<i>200</i>&nbsp;         *          r1.getUpDown()==r2.getUpDown() &amp;&amp; r1.getFloor()==r2.getFloor()) ==&gt; \result==true;
+<i>201</i>&nbsp;         *      (r1.getType().equals(&quot;ER&quot;) &amp;&amp; r2.getType().equals(&quot;ER&quot;) &amp;&amp; r1.getFloor()==r2.getFloor()) ==&gt; \result==true;
+<i>202</i>&nbsp;         *      other conditions ==&gt; \result==false;
+<i>203</i>&nbsp;         */
+<b class="fc"><i>204</i>&nbsp;        if (r1==null || r2==null) return false;</b>
+<b class="fc"><i>205</i>&nbsp;        if (r1.getType().equals(&quot;FR&quot;) &amp;&amp; r2.getType().equals(&quot;FR&quot;)) {//都是楼层灯</b>
+<b class="fc"><i>206</i>&nbsp;            if (r1.getUpDown()==r2.getUpDown() &amp;&amp; r1.getFloor()==r2.getFloor()) return true;</b>
+<b class="fc"><i>207</i>&nbsp;        } else if (r1.getType().equals(&quot;ER&quot;) &amp;&amp; r2.getType().equals(&quot;ER&quot;)) {//都是电梯灯</b>
+<b class="fc"><i>208</i>&nbsp;            if (r1.getFloor()==r2.getFloor()) return true;</b>
+<i>209</i>&nbsp;        }
+<b class="fc"><i>210</i>&nbsp;        return false;</b>
+<i>211</i>&nbsp;    }
+<i>212</i>&nbsp;
+<i>213</i>&nbsp;    boolean checkPickUp(Request r,PriorityQueue&lt;Request&gt; q,int upDown) {//检查请求r能否加入优先队列q中
+<i>214</i>&nbsp;        /**
+<i>215</i>&nbsp;         * @REQUIRES:r!=null;q!=null;
+<i>216</i>&nbsp;         * @MODIFIES:None;
+<i>217</i>&nbsp;         * @EFFECTS:
+<i>218</i>&nbsp;         *      如果请求r能够被加入当前优先队列中，则返回true，否则返回false;
+<i>219</i>&nbsp;         */
+<b class="fc"><i>220</i>&nbsp;        Queue&lt;Request&gt; sameReq = new LinkedList&lt;&gt;();</b>
+<b class="fc"><i>221</i>&nbsp;        boolean sameDir = upDown==1?r.getFloor()&gt;elv.getCurPos():</b>
+<b class="fc"><i>222</i>&nbsp;                r.getFloor()&lt;elv.getCurPos();//方向相同</b>
+<b class="fc"><i>223</i>&nbsp;        boolean FRWarn = false;//注意楼层请求</b>
+<b class="fc"><i>224</i>&nbsp;        int maxFloor=0;//最高楼层</b>
+<b class="fc"><i>225</i>&nbsp;        int minFloor = 11;//最底层</b>
+<i>226</i>&nbsp;        //计算响应时间resTime
+<b class="fc"><i>227</i>&nbsp;        double resTime = Math.abs(r.getFloor()-elv.getCurPos())*0.5</b>
+<b class="fc"><i>228</i>&nbsp;                +elv.getComTime();</b>
+<b class="fc"><i>229</i>&nbsp;        for (Request reqPri:q) {</b>
+<b class="fc"><i>230</i>&nbsp;            if (maxFloor&lt;reqPri.getFloor())</b>
+<b class="fc"><i>231</i>&nbsp;                maxFloor = reqPri.getFloor();</b>
+<b class="fc"><i>232</i>&nbsp;            if (minFloor&gt;reqPri.getFloor())</b>
+<b class="fc"><i>233</i>&nbsp;                minFloor = reqPri.getFloor();</b>
+<b class="fc"><i>234</i>&nbsp;            if (upDown==1 &amp;&amp; reqPri.getFloor()&lt;r.getFloor())</b>
+<b class="fc"><i>235</i>&nbsp;                resTime+=1;</b>
+<b class="fc"><i>236</i>&nbsp;            if (upDown==-1 &amp;&amp; reqPri.getFloor()&gt;r.getFloor())</b>
+<b class="fc"><i>237</i>&nbsp;                resTime+=1;</b>
+<b class="fc"><i>238</i>&nbsp;            if (reqPri.getFloor()==r.getFloor())</b>
+<b class="fc"><i>239</i>&nbsp;                sameReq.offer(reqPri);</b>
+<b class="fc"><i>240</i>&nbsp;        }</b>
+<b class="fc"><i>241</i>&nbsp;        if (r.getType().equals(&quot;ER&quot;) ||</b>
+<b class="fc"><i>242</i>&nbsp;                (upDown==1 &amp;&amp; r.getType().equals(&quot;FR&quot;) &amp;&amp; r.getUpDown()==1 &amp;&amp; r.getFloor()&lt;=maxFloor) ||</b>
+<b class="fc"><i>243</i>&nbsp;                (upDown==-1 &amp;&amp; r.getType().equals(&quot;FR&quot;) &amp;&amp; r.getUpDown()==0 &amp;&amp; r.getFloor()&gt;=minFloor)) {</b>
+<b class="fc"><i>244</i>&nbsp;            FRWarn = true;</b>
+<i>245</i>&nbsp;        }
+<b class="fc"><i>246</i>&nbsp;        return resTime&gt;r.getTime() &amp;&amp; sameDir &amp;&amp; FRWarn &amp;&amp; sameReq.size()==0;</b>
+<i>247</i>&nbsp;    }
+<i>248</i>&nbsp;}
+</div>
+</div>
+
+<div class="footer">
+    
+    <div style="float:right;">generated on 2017-05-28 09:46</div>
+</div>
+</body>
+</html>
